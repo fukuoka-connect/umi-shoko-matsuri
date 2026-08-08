@@ -391,22 +391,34 @@
     @media(max-width:520px){.daynight-hud{top:60px;right:8px;width:30px;height:30px;}.hud-stars{width:54px;height:46px;}}
 
     /* ── パレード：ポスターのキャラクターが歩き回る ── */
-    .parade{position:relative;height:56px;max-width:1080px;margin:0 auto;overflow:hidden;pointer-events:none;}
+    .parade{position:relative;height:92px;max-width:1080px;margin:0 auto;overflow:hidden;pointer-events:none;}
     .parade::after{content:"";position:absolute;left:0;right:0;bottom:9px;height:3px;background:repeating-linear-gradient(90deg,var(--line) 0 9px,transparent 9px 20px);opacity:.35;}
-    .p-char{position:absolute;bottom:6px;left:0;font-size:24px;line-height:1;animation:walk linear infinite;}
+    .p-char{position:absolute;bottom:6px;left:0;font-size:24px;line-height:1;animation:walk linear infinite;pointer-events:auto;cursor:pointer;touch-action:manipulation;}
     .p-flip{display:inline-block;}
     .p-flip.rev{transform:scaleX(-1);}
-    .p-bob{display:inline-block;animation:bob .48s ease-in-out infinite alternate;filter:drop-shadow(1px 2px 0 rgba(14,47,69,.25));}
-    .p-bob img{display:block;height:32px;width:auto;image-rendering:pixelated;image-rendering:-moz-crisp-edges;image-rendering:crisp-edges;}
+    .p-bob{display:inline-block;animation:bob .48s ease-in-out infinite alternate;filter:drop-shadow(1px 2px 0 rgba(14,47,69,.25));transform-origin:50% 100%;}
+    .p-bob img{display:block;height:46px;width:auto;image-rendering:pixelated;image-rendering:-moz-crisp-edges;image-rendering:crisp-edges;}
     .p-balloon{position:absolute;font-size:20px;animation:float-up 7s ease-in-out infinite;}
     @keyframes walk{0%{transform:translateX(-12%);}100%{transform:translateX(112%);}}
     @keyframes bob{0%{transform:translateY(0);}100%{transform:translateY(-5px);}}
     @keyframes float-up{0%{transform:translate(0,0);opacity:.9;}50%{transform:translate(6px,-14px);opacity:1;}100%{transform:translate(-4px,-2px);opacity:.9;}}
 
+    /* ── キャラクターのマウス／タップ反応 ── */
+    .p-char:hover,.p-char:focus-visible,.p-char.poked{animation-play-state:paused;z-index:5;}
+    .p-char:hover .p-flip,.p-char:focus-visible .p-flip,.p-char.poked .p-flip{animation-play-state:paused;}
+    .p-char:hover .p-bob,.p-char:focus-visible .p-bob{animation:wiggle .3s ease-in-out infinite;}
+    .p-char.poked .p-bob{animation:poke .55s cubic-bezier(.34,1.56,.64,1) 1;}
+    @keyframes wiggle{0%,100%{transform:translateY(-6px) rotate(-7deg) scale(1.28);}50%{transform:translateY(-11px) rotate(7deg) scale(1.32);}}
+    @keyframes poke{0%{transform:translateY(0) scale(1) rotate(0);}30%{transform:translateY(-20px) scale(1.4) rotate(-12deg);}55%{transform:translateY(-18px) scale(1.4) rotate(12deg);}80%{transform:translateY(-4px) scale(1.1) rotate(-4deg);}100%{transform:translateY(0) scale(1) rotate(0);}}
+    .p-spark{position:absolute;left:50%;top:-4px;transform:translateX(-50%);font-size:18px;pointer-events:none;animation:spark-pop .7s ease forwards;z-index:6;}
+    @keyframes spark-pop{0%{opacity:0;transform:translate(-50%,0) scale(.3);}25%{opacity:1;transform:translate(-50%,-16px) scale(1.2);}100%{opacity:0;transform:translate(-50%,-38px) scale(.9);}}
+
     /* ── 画面下：豆粒キャラが端から端へ ── */
-    .street{position:fixed;left:0;right:0;bottom:0;height:24px;z-index:40;overflow:hidden;pointer-events:none;opacity:.92;}
+    .street{position:fixed;left:0;right:0;bottom:0;height:38px;z-index:40;overflow:hidden;pointer-events:none;opacity:.92;}
     .street .p-char{font-size:18px;bottom:2px;}
-    .street .p-bob img{height:22px;}
+    .street .p-bob img{height:28px;}
+    .street .p-char:hover .p-bob,.street .p-char:focus-visible .p-bob{animation:wiggle-sm .3s ease-in-out infinite;}
+    @keyframes wiggle-sm{0%,100%{transform:translateY(-3px) rotate(-6deg) scale(1.15);}50%{transform:translateY(-6px) rotate(6deg) scale(1.2);}}
 
     @media(prefers-reduced-motion:reduce){
       .reveal{opacity:1;transform:none;transition:none;}
@@ -620,6 +632,26 @@
       if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('vis'));return;}
       const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
       document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    })();
+
+    // ── パレードキャラ：クリック／タップで反応 ──
+    (function(){
+      const sparks=['✨','⭐','💫','🎉','♪'];
+      document.querySelectorAll('.p-char').forEach(el=>{
+        el.addEventListener('click',()=>{
+          el.classList.remove('poked');
+          void el.offsetWidth;
+          el.classList.add('poked');
+          const s=document.createElement('span');
+          s.className='p-spark';
+          s.textContent=sparks[Math.floor(Math.random()*sparks.length)];
+          el.appendChild(s);
+          s.addEventListener('animationend',()=>s.remove());
+        });
+        el.addEventListener('animationend',(e)=>{
+          if(e.animationName==='poke') el.classList.remove('poked');
+        });
+      });
     })();
 
     // ── 昼→夜：スクロール連動で太陽が沈み月と星が浮かぶ ──
