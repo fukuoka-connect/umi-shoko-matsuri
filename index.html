@@ -226,7 +226,7 @@
       background:#fff;padding:6px;transform:rotate(-1.2deg);transition:transform .18s;
     }
     .hero-poster:hover{transform:rotate(0) translateY(-3px);}
-    .hero-poster img{width:100%;display:block;border:2px solid var(--line);}
+    .hero-poster img{width:100%;aspect-ratio:635/900;display:block;border:2px solid var(--line);image-rendering:pixelated;image-rendering:-moz-crisp-edges;image-rendering:crisp-edges;}
     .hero-poster .tag{
       position:absolute;top:-12px;right:-10px;background:var(--yellow);color:var(--line);
       font-weight:900;font-size:11px;padding:5px 10px;border:2.5px solid var(--line);
@@ -397,6 +397,7 @@
     .p-flip{display:inline-block;}
     .p-flip.rev{transform:scaleX(-1);}
     .p-bob{display:inline-block;animation:bob .48s ease-in-out infinite alternate;filter:drop-shadow(1px 2px 0 rgba(14,47,69,.25));}
+    .p-bob img{display:block;height:32px;width:auto;image-rendering:pixelated;image-rendering:-moz-crisp-edges;image-rendering:crisp-edges;}
     .p-balloon{position:absolute;font-size:20px;animation:float-up 7s ease-in-out infinite;}
     @keyframes walk{0%{transform:translateX(-12%);}100%{transform:translateX(112%);}}
     @keyframes bob{0%{transform:translateY(0);}100%{transform:translateY(-5px);}}
@@ -405,6 +406,7 @@
     /* ── 画面下：豆粒キャラが端から端へ ── */
     .street{position:fixed;left:0;right:0;bottom:0;height:24px;z-index:40;overflow:hidden;pointer-events:none;opacity:.92;}
     .street .p-char{font-size:18px;bottom:2px;}
+    .street .p-bob img{height:22px;}
 
     @media(prefers-reduced-motion:reduce){
       .reveal{opacity:1;transform:none;transition:none;}
@@ -464,9 +466,9 @@
   </header>
 
   <div class="parade" aria-hidden="true">
-    <span class="p-char" style="animation-duration:15s;animation-delay:-2s;"><span class="p-flip"><span class="p-bob">🎤</span></span></span>
-    <span class="p-char" style="animation-duration:11s;animation-delay:-6s;bottom:6px;"><span class="p-flip rev"><span class="p-bob" style="animation-duration:.4s;">🧒</span></span></span>
-    <span class="p-char" style="animation-duration:18s;animation-delay:-9s;"><span class="p-flip"><span class="p-bob" style="animation-duration:.6s;">🐶</span></span></span>
+    <span class="p-char" style="animation-duration:15s;animation-delay:-2s;"><span class="p-flip"><span class="p-bob"><img src="images/characters/mic-dad.png" alt=""></span></span></span>
+    <span class="p-char" style="animation-duration:11s;animation-delay:-6s;bottom:6px;"><span class="p-flip rev"><span class="p-bob" style="animation-duration:.4s;"><img src="images/characters/kid-boy.png" alt=""></span></span></span>
+    <span class="p-char" style="animation-duration:18s;animation-delay:-9s;"><span class="p-flip"><span class="p-bob" style="animation-duration:.6s;"><img src="images/characters/dog.png" alt=""></span></span></span>
     <span class="p-balloon" style="left:70%;top:6px;animation-delay:-2s;">🎈</span>
   </div>
   <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
@@ -519,8 +521,8 @@
   </section>
 
   <div class="parade" aria-hidden="true">
-    <span class="p-char" style="animation-duration:13s;animation-delay:-4s;"><span class="p-flip"><span class="p-bob">🍺</span></span></span>
-    <span class="p-char" style="animation-duration:10s;animation-delay:-1s;bottom:7px;"><span class="p-flip rev"><span class="p-bob" style="animation-duration:.42s;">🧒</span></span></span>
+    <span class="p-char" style="animation-duration:13s;animation-delay:-4s;"><span class="p-flip"><span class="p-bob"><img src="images/characters/drink-man.png" alt=""></span></span></span>
+    <span class="p-char" style="animation-duration:10s;animation-delay:-1s;bottom:7px;"><span class="p-flip rev"><span class="p-bob" style="animation-duration:.42s;"><img src="images/characters/kid-girl.png" alt=""></span></span></span>
     <span class="p-balloon" style="left:22%;top:4px;animation-delay:-4.5s;">🎈</span>
   </div>
 
@@ -552,8 +554,8 @@
   </section>
 
   <div class="parade" aria-hidden="true">
-    <span class="p-char" style="animation-duration:17s;animation-delay:-7s;"><span class="p-flip"><span class="p-bob" style="animation-duration:.55s;">🐶</span></span></span>
-    <span class="p-char" style="animation-duration:12s;animation-delay:-3s;bottom:6px;"><span class="p-flip"><span class="p-bob">🎤</span></span></span>
+    <span class="p-char" style="animation-duration:17s;animation-delay:-7s;"><span class="p-flip"><span class="p-bob" style="animation-duration:.55s;"><img src="images/characters/dog.png" alt=""></span></span></span>
+    <span class="p-char" style="animation-duration:12s;animation-delay:-3s;bottom:6px;"><span class="p-flip"><span class="p-bob"><img src="images/characters/kid-jump.png" alt=""></span></span></span>
     <span class="p-balloon" style="left:55%;top:5px;animation-delay:-1s;">🎈</span>
   </div>
   <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
@@ -609,7 +611,7 @@
   </footer>
 
   <div class="street" aria-hidden="true">
-    <span class="p-char" style="animation-duration:22s;animation-delay:-4s;"><span class="p-flip"><span class="p-bob" style="animation-duration:.5s;">🐶</span></span></span>
+    <span class="p-char" style="animation-duration:22s;animation-delay:-4s;"><span class="p-flip"><span class="p-bob" style="animation-duration:.5s;"><img src="images/characters/dog.png" alt=""></span></span></span>
     <span class="p-balloon" style="left:38%;top:2px;font-size:14px;animation-duration:6s;animation-delay:-2s;">🎈</span>
   </div>
 
