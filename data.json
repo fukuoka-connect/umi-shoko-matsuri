@@ -45,13 +45,30 @@
       ]
     },
     {
-      "_note": "出演日・時間が未定のため仮置き。確定したら day（\"10.15\" / \"10.16\"）と time を書き換え、bio に {\"label\":\"...\",\"text\":\"...\"} を追加。timetable にも行を追加すること。",
+      "_note": "出演日・時間が未定のため仮置き。確定したら day（\"10.15\" / \"10.16\"）と time を書き換え、timetable にも行を追加すること。",
       "day": "10.15",
-      "name": "TAIAUKE",
-      "role": "スペシャルゲスト",
+      "name": "TAISUKE",
+      "role": "B-BOY／THE FLOORRIORZ クルーリーダー",
       "time": "出演日時 調整中",
-      "photo": "images/guests/taiauke.jpg",
-      "bio": []
+      "photo": "images/guests/taisuke.jpg",
+      "bio": [
+        {
+          "label": "プロフィール",
+          "text": "8歳からブレイクダンスを始め、世界を舞台に活躍するB-BOY。世界で15人しか選ばれていない「Red Bull BC One ALL Stars」の初期メンバー7人に選出。THE FLOORRIORZのクルーリーダーを務める。"
+        },
+        {
+          "label": "肩書き",
+          "text": "THE FLOORRIORZ クルーリーダー／佐世保市（長崎県）観光名誉大使／かわさき産業親善大使"
+        },
+        {
+          "label": "主な戦績",
+          "text": "R16 Korea World Final Solo Battle 優勝（日本人初）／R16 Korea World Final Show&Battle 優勝（日本人初）／Red Bull BC One Japan 2007 優勝／Red Bull BC One ASIA PACIFIC Final 優勝／DANCE@LIVE FINAL 優勝6回（大会史上最多）／Battle of the Year World Final 2015〜2017 三連覇（大会史上初）／UK B-BOY CHAMPIONSHIP World Final 2016 優勝 ほか多数"
+        },
+        {
+          "label": "TV・CM・映画",
+          "text": "Red Bull CM（2010年・2012年・2016年）／赤西仁「Hey What's up」MV出演／「SMAP×SMAP」「笑っていいとも！」などTV番組多数／ドキュメンタリー映画「Turn it Loose」出演"
+        }
+      ]
     },
     {
       "day": "10.16",
