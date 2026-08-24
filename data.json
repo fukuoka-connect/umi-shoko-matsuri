@@ -45,11 +45,12 @@
       ]
     },
     {
+      "_note": "出演日・時間が未定のため仮置き。確定したら day（\"10.15\" / \"10.16\"）と time を書き換え、bio に {\"label\":\"...\",\"text\":\"...\"} を追加。timetable にも行を追加すること。",
       "day": "10.15",
-      "name": "ゲスト情報準備中",
-      "role": "近日発表",
-      "time": "未定",
-      "photo": null,
+      "name": "TAIAUKE",
+      "role": "スペシャルゲスト",
+      "time": "出演日時 調整中",
+      "photo": "images/guests/taiauke.jpg",
       "bio": []
     },
     {
