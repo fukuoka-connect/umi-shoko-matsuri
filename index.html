@@ -310,6 +310,7 @@
     .guest-card .ph .fg{position:relative;width:100%;height:100%;object-fit:contain;}
     .guest-card .info{padding:14px 12px 16px;}
     .guest-card .nm{font-weight:900;color:var(--line);font-size:20px;letter-spacing:.02em;line-height:1.3;}
+    .guest-card .nm .kana{display:block;font-size:11px;font-weight:700;color:var(--sky-deeper);letter-spacing:.08em;margin-top:2px;}
     .guest-card .rl{font-size:12px;color:var(--sky-deeper);font-weight:700;margin-top:4px;}
     .guest-card .tm{display:inline-block;margin-top:10px;background:var(--yellow);border:2px solid var(--line);padding:4px 12px;font-weight:900;font-size:11.5px;color:var(--line);}
     .guest-card .tap-note{margin-top:10px;font-size:10.5px;color:var(--sky-deeper);font-weight:700;}
@@ -342,6 +343,7 @@
     }
     .guest-modal .photo-wrap .fg{position:relative;width:100%;height:100%;object-fit:contain;}
     .guest-modal h3{font-size:21px;font-weight:900;color:var(--line);}
+    .guest-modal h3 .kana{display:block;font-size:11.5px;font-weight:700;color:var(--sky-deeper);letter-spacing:.08em;margin-top:3px;}
     .guest-modal .role{color:var(--sky-deeper);font-weight:800;font-size:13px;margin-top:2px;}
     .guest-modal .time-badge{
       display:inline-block;background:var(--yellow);border:2px solid var(--line);
@@ -350,6 +352,17 @@
     .guest-modal .bio-sec{margin-bottom:12px;}
     .guest-modal .bio-sec .lb{font-weight:900;font-size:12px;color:var(--red);margin-bottom:3px;}
     .guest-modal .bio-sec .tx{font-size:13px;line-height:1.75;color:var(--ink);}
+    .guest-modal .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+    .guest-modal .links a{
+      display:inline-block;background:var(--sky-mid);color:var(--line);
+      border:2px solid var(--line);box-shadow:var(--shadow-hard-sm);
+      padding:7px 13px;font-weight:900;font-size:12px;text-decoration:none;
+      transition:transform .12s ease,box-shadow .12s ease;
+    }
+    .guest-modal .links a:hover,.guest-modal .links a:focus-visible{
+      background:var(--yellow);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--line);
+    }
+    .guest-modal .links a::after{content:" ↗";font-size:11px;}
     .tt-day-tab{display:flex;gap:10px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;}
     .tt-day-tab span{
       background:var(--sky-deep);color:#fff;font-weight:900;font-size:13px;padding:8px 16px;border:2.5px solid var(--line);
@@ -788,11 +801,15 @@
         const bioHtml = (g.bio&&g.bio.length)
           ? g.bio.map(b=>`<div class="bio-sec"><div class="lb">${b.label}</div><div class="tx">${b.text}</div></div>`).join('')
           : `<div class="placeholder-box">プロフィールは近日公開</div>`;
+        const linksHtml = (g.links&&g.links.length)
+          ? `<div class="links">${g.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a>`).join('')}</div>`
+          : '';
         body.innerHTML = `${photoHtml}
-          <h3>${g.name||''}</h3>
+          <h3>${g.name||''}${g.name_kana?`<span class="kana">${g.name_kana}</span>`:''}</h3>
           ${g.role?`<div class="role">${g.role}</div>`:''}
           ${g.time?`<div class="time-badge">🗓 ${g.time}</div>`:''}
-          ${bioHtml}`;
+          ${bioHtml}
+          ${linksHtml}`;
         document.getElementById('guest-modal-overlay').classList.add('open');
       }
       function closeGuestModal(){
@@ -825,7 +842,7 @@
             return `<div class="guest-card" data-day="${i}" data-gi="${gi}" role="button" tabindex="0">
               <div class="ph">${ph}</div>
               <div class="info">
-                <div class="nm">${g.name||''}</div>
+                <div class="nm">${g.name||''}${g.name_kana?`<span class="kana">${g.name_kana}</span>`:''}</div>
                 ${g.role?`<div class="rl">${g.role}</div>`:''}
                 ${g.time?`<div class="tm">${g.time}</div>`:''}
                 <div class="tap-note">タップして詳細を見る</div>
