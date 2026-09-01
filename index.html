@@ -364,8 +364,8 @@
     .tt-body .ti{font-weight:800;color:var(--line);font-size:14px;}
 
     /* ── FOOD 屋台 ── */
-    .food-grid{display:grid;gap:18px;grid-template-columns:1fr;}
-    @media(min-width:680px){.food-grid{grid-template-columns:1fr 1fr;}}
+    /* カード枚数に追随（1枚のときに左半分へ寄らないよう auto-fit＋最大幅） */
+    .food-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));max-width:760px;margin-inline:auto;}
     .food-card{
       background:#fff;border:3px solid var(--line);box-shadow:var(--shadow-hard-sm);padding:20px;
     }
