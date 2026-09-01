@@ -114,22 +114,9 @@
     .bg-green{background:#eafbf2;}
     .bg-afternoon{background:linear-gradient(180deg,var(--sky-deeper) 0,#fff4e4 90px,#fff4e4 100%);}
     .bg-golden{background:linear-gradient(180deg,#fff4e4,#ffe4ac 60%,#ffd98a);}
-    .bg-sunset{background:linear-gradient(180deg,#ffd98a,#ffb98a 46%,#f2896f 100%);}
-    .bg-night{background:linear-gradient(180deg,#f2896f,#4c3c74 22%,#1c2b52 60%,var(--line) 100%);position:relative;}
-    .bg-night::before{
-      content:"";position:absolute;inset:0;pointer-events:none;
-      background-image:
-        radial-gradient(1.5px 1.5px at 12% 18%,#fff 0,transparent 60%),
-        radial-gradient(1.5px 1.5px at 28% 40%,#fff 0,transparent 60%),
-        radial-gradient(2px 2px at 44% 14%,#fff 0,transparent 60%),
-        radial-gradient(1.5px 1.5px at 63% 30%,#fff 0,transparent 60%),
-        radial-gradient(2px 2px at 78% 12%,#fff 0,transparent 60%),
-        radial-gradient(1.5px 1.5px at 90% 38%,#fff 0,transparent 60%),
-        radial-gradient(1.5px 1.5px at 8% 60%,#fff 0,transparent 60%),
-        radial-gradient(1.5px 1.5px at 52% 55%,#fff 0,transparent 60%),
-        radial-gradient(2px 2px at 96% 66%,#fff 0,transparent 60%);
-      opacity:.85;animation:twinkle 3.6s ease-in-out infinite;
-    }
+    /* お楽しみコーナー（bg-golden）削除後、黄金色の区間をここに吸収して昼→夕方を途切れさせない */
+    .bg-sunset{background:linear-gradient(180deg,#fff4e4,#ffe4ac 26%,#ffd98a 46%,#ffb98a 72%,#f2896f 100%);}
+    /* 夜の背景は .night-band（フッター直前の帯）が担当する */
     @keyframes twinkle{0%,100%{opacity:.4;}50%{opacity:.95;}}
 
     /* ── ドット装飾ライン（区切り） ── */
@@ -391,17 +378,6 @@
     .menu-tags li{background:var(--yellow);color:var(--line);font-weight:800;font-size:12.5px;padding:6px 12px;border:2px solid var(--line);}
     .food-note{margin-top:10px;font-size:12.5px;color:#5a6b78;font-weight:700;}
 
-    /* ── その他コーナー ── */
-    .corner-grid{display:grid;gap:18px;grid-template-columns:1fr;}
-    @media(min-width:680px){.corner-grid{grid-template-columns:repeat(3,1fr);}}
-    .corner-card{
-      background:#fff;border:3px solid var(--line);padding:22px 18px;text-align:center;
-      box-shadow:var(--shadow-hard-sm);
-    }
-    .corner-card .ic{font-size:38px;margin-bottom:12px;}
-    .corner-card h3{color:var(--sky-deeper);font-weight:900;font-size:16px;margin-bottom:8px;}
-    .corner-card p{font-size:13px;color:var(--ink);}
-
     /* ── ACCESS ── */
     .access-alert{
       background:var(--red);color:#fff;border:3px solid var(--line);padding:18px 20px;
@@ -421,22 +397,30 @@
     .access-card .vl a{color:var(--sky-deeper);font-weight:900;border-bottom:2px solid var(--sky-deeper);}
     .venue-note{text-align:center;font-size:12.5px;color:#5a6b78;font-weight:700;margin-top:16px;}
 
-    /* ── INSTAGRAM ── */
-    .insta-card{
-      max-width:520px;margin:0 auto;background:#fff;border:4px solid var(--line);box-shadow:var(--shadow-hard);
-      padding:28px 22px;text-align:center;
+    /* ── 夜の帯：夕焼け → フッターの紺へつなぐ ── */
+    .night-band{
+      background:linear-gradient(180deg,#f2896f,#4c3c74 34%,#1c2b52 72%,var(--line) 100%);
+      position:relative;overflow:hidden;
     }
-    .insta-qr{
-      width:120px;height:120px;margin:0 auto 16px;background:
-        repeating-linear-gradient(0deg,var(--line) 0 8px,#fff 8px 16px),
-        repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px);
-      background-blend-mode:multiply;border:3px solid var(--line);position:relative;
+    .night-band::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background-image:
+        radial-gradient(1.5px 1.5px at 14% 30%,#fff 0,transparent 60%),
+        radial-gradient(2px 2px at 33% 18%,#fff 0,transparent 60%),
+        radial-gradient(1.5px 1.5px at 58% 34%,#fff 0,transparent 60%),
+        radial-gradient(2px 2px at 74% 16%,#fff 0,transparent 60%),
+        radial-gradient(1.5px 1.5px at 91% 40%,#fff 0,transparent 60%);
+      opacity:.85;animation:twinkle 3.6s ease-in-out infinite;
     }
-    .insta-qr::before{content:"QR";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:900;font-size:14px;background:rgba(232,56,43,.85);}
-    .insta-card h3{color:var(--red);font-size:18px;font-weight:900;margin-bottom:10px;}
-    .insta-card p{font-size:13.5px;color:var(--ink);margin-bottom:16px;}
-    .insta-handle{font-weight:800;color:var(--sky-deeper);font-size:13px;margin-top:12px;}
+    /* 夜帯の中では足元のドット線を明るく（濃紺に沈まないように） */
+    .night-band .parade::after{background:repeating-linear-gradient(90deg,#fff 0 9px,transparent 9px 20px);opacity:.28;}
+    .night-band .p-bob{filter:drop-shadow(1px 2px 0 rgba(0,0,0,.45));}
+    .p-lantern{
+      position:absolute;top:8px;font-size:20px;line-height:1;
+      animation:lantern-sway 4.2s ease-in-out infinite alternate;
+      filter:drop-shadow(0 0 8px rgba(255,170,90,.55));
+    }
+    @keyframes lantern-sway{0%{transform:rotate(-7deg);}100%{transform:rotate(7deg);}}
 
     /* ── FOOTER ── */
     footer{background:var(--line);color:#fff;text-align:center;padding:44px 20px 30px;}
@@ -505,7 +489,7 @@
     @media(prefers-reduced-motion:reduce){
       .reveal{opacity:1;transform:none;transition:none;}
       html{scroll-behavior:auto;}
-      .p-char,.p-bob,.p-balloon,.hud-stars i{animation:none;}
+      .p-char,.p-bob,.p-balloon,.hud-stars i,.p-lantern,.night-band::before{animation:none;}
       .street{display:none;}
     }
   </style>
@@ -626,33 +610,6 @@
     <span class="p-balloon" style="left:22%;top:4px;animation-delay:-4.5s;">🎈</span>
   </div>
 
-  <!-- 特産品・体験・キッズ -->
-  <section class="bg-golden reveal">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-kicker pixel">お楽しみコーナー</span>
-        <h2 class="sec-title pixel">特産品・体験・キッズ</h2>
-      </div>
-      <div class="corner-grid">
-        <div class="corner-card">
-          <div class="ic">🌾</div>
-          <h3>地元特産品販売</h3>
-          <p>宇美町自慢の特産品が並びます。お土産探しにもどうぞ。</p>
-        </div>
-        <div class="corner-card">
-          <div class="ic">🎨</div>
-          <h3>体験コーナー</h3>
-          <p>大人も子どもも楽しめる体験企画をご用意しています。</p>
-        </div>
-        <div class="corner-card">
-          <div class="ic">🎈</div>
-          <h3>キッズコーナー</h3>
-          <p>小さなお子さま連れのご家族も安心して楽しめます。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <div class="parade" aria-hidden="true">
     <span class="p-char" style="animation-duration:17s;animation-delay:-7s;"><span class="p-flip"><span class="p-bob" style="animation-duration:.55s;"><img src="images/characters/dog.png" alt=""></span></span></span>
     <span class="p-char" style="animation-duration:12s;animation-delay:-3s;bottom:6px;"><span class="p-flip"><span class="p-bob"><img src="images/characters/kid-jump.png" alt=""></span></span></span>
@@ -676,29 +633,26 @@
       </div>
 
       <div class="access-cards" id="access-cards"></div>
-      <p class="venue-note">※会場詳細（区画・案内図）は決定次第このページで更新します</p>
+      <p class="venue-note" id="venue-note">※会場内の区画・案内図は決定次第このページで更新します</p>
     </div>
   </section>
 
-  <!-- INSTAGRAM -->
-  <section class="bg-night reveal">
-    <div class="wrap">
-      <div class="insta-card">
-        <div class="insta-qr" aria-hidden="true"></div>
-        <h3>最新情報はInstagramで</h3>
-        <p>ステージ出演者やタイムテーブルなど、最新情報はInstagramで随時お知らせします。</p>
-        <a href="#" id="insta-link" class="btn btn-primary" target="_blank" rel="noopener">Instagramをフォロー</a>
-        <div class="insta-handle" id="insta-handle"></div>
-      </div>
+  <!-- 夜へ：夕焼けからフッターへつなぐ帯（提灯の灯りとまちの人） -->
+  <div class="night-band" aria-hidden="true">
+    <div class="parade">
+      <span class="p-char" style="animation-duration:19s;animation-delay:-5s;"><span class="p-flip"><span class="p-bob"><img src="images/characters/mic-dad.png" alt=""></span></span></span>
+      <span class="p-char" style="animation-duration:14s;animation-delay:-2s;bottom:6px;"><span class="p-flip rev"><span class="p-bob" style="animation-duration:.45s;"><img src="images/characters/kid-girl.png" alt=""></span></span></span>
+      <span class="p-lantern" style="left:16%;animation-delay:-1.2s;">🏮</span>
+      <span class="p-lantern" style="left:48%;animation-delay:-3.4s;">🏮</span>
+      <span class="p-lantern" style="left:79%;animation-delay:-2.1s;">🏮</span>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo pixel">宇美町商工祭り<span class="en">UMIMACHI SHOKO MATSURI</span></div>
     <div class="footer-org">
       <div>主催 ／ <strong id="footer-organizer">宇美町商工会</strong></div>
-      <div>協力 ／ <span id="footer-cooperation">宇美町 ／ 宇美町観光協会</span></div>
     </div>
     <div class="footer-tel">お問い合わせ ／ 宇美町商工会 <a href="tel:0929320443">092-932-0443</a></div>
     <nav class="footer-nav" aria-label="フッターメニュー">
@@ -833,7 +787,7 @@
 
         let guestHtml;
         if(dayGuests.length===0){
-          guestHtml = `<div class="placeholder-box">ゲスト情報は近日公開<br><small>Instagramでも随時お知らせします</small></div>`;
+          guestHtml = `<div class="placeholder-box">ゲスト情報は近日公開</div>`;
         } else {
           guestHtml = `<div class="guest-grid">${dayGuests.map((g,gi)=>{
             const ph = g.photo
@@ -920,6 +874,7 @@
 
       // access
       document.getElementById('access-venue').textContent = `会場：${ev.venue}`;
+      if(ev.venue_note) document.getElementById('venue-note').textContent = ev.venue_note;
       const ac = document.getElementById('access-cards');
       (data.access||[]).forEach(item=>{
         const d=document.createElement('div');d.className='access-card';
@@ -927,13 +882,8 @@
         ac.appendChild(d);
       });
 
-      // instagram
-      document.getElementById('insta-link').href = ev.instagram_url || '#';
-      document.getElementById('insta-handle').textContent = ev.instagram_handle || '';
-
       // footer
       document.getElementById('footer-organizer').textContent = ev.organizer || '';
-      document.getElementById('footer-cooperation').textContent = ev.cooperation || '';
     }).catch(e=>console.error('data load failed',e));
   </script>
 </body>
