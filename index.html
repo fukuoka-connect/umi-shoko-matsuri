@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>宇美町商工祭り 2026｜10月15日(木)・16日(金) 入場無料</title>
-  <meta name="description" content="宇美町商工会が贈る商工祭り。ステージイベント・地元特産品販売・グルメ屋台・体験コーナー・キッズコーナーが盛りだくさん。2026年10月15日(木)・16日(金)開催、入場無料。会場：宇美八幡宮。">
+  <meta name="description" content="宇美町商工会が贈る商工祭り。中村素也・TAISUKE・志免飛龍太鼓・ビーグルクルーが出演するステージイベントとグルメ屋台。2026年10月15日(木)・16日(金)開催、入場無料。会場：宇美八幡宮。">
   <link rel="canonical" href="https://fukuoka-connect.github.io/umi-shoko-matsuri/">
   <meta property="og:title" content="宇美町商工祭り 2026｜みんなでつくる、まちの未来。">
-  <meta property="og:description" content="10月15日(木)・16日(金)開催。ステージイベント・特産品・屋台・体験コーナー・キッズコーナーが盛りだくさんの宇美町商工祭り。入場無料。">
+  <meta property="og:description" content="10月15日(木)・16日(金)開催。ステージイベントとグルメ屋台で盛り上がる宇美町商工祭り。会場は宇美八幡宮、入場無料。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="宇美町商工祭り">
   <meta property="og:url" content="https://fukuoka-connect.github.io/umi-shoko-matsuri/">
   <meta property="og:image" content="https://fukuoka-connect.github.io/umi-shoko-matsuri/images/ogp.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="宇美町商工祭り 2026｜みんなでつくる、まちの未来。">
-  <meta name="twitter:description" content="10月15日(木)・16日(金)開催。ステージ・特産品・屋台・体験・キッズコーナーが盛りだくさん。入場無料。">
+  <meta name="twitter:description" content="10月15日(木)・16日(金)開催。ステージイベントとグルメ屋台で盛り上がる二日間。会場は宇美八幡宮、入場無料。">
   <meta name="theme-color" content="#3fb4ee">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%233fb4ee'/%3E%3Crect x='3' y='3' width='10' height='10' fill='%23e8382b'/%3E%3Crect x='6' y='6' width='4' height='4' fill='%23ffd23a'/%3E%3C/svg%3E">
 
@@ -229,7 +229,8 @@
     /* ── INTRO / HIGHLIGHTS ── */
     .hi-grid{display:grid;gap:16px;grid-template-columns:1fr;}
     @media(min-width:640px){.hi-grid{grid-template-columns:1fr 1fr;}}
-    @media(min-width:980px){.hi-grid{grid-template-columns:repeat(5,1fr);}}
+    /* カード枚数に追随（2枚でも間延びしないよう最大幅を持たせる） */
+    @media(min-width:640px){.hi-grid{max-width:760px;margin-inline:auto;}}
     .hi-card{
       background:#fff;border:3px solid var(--line);box-shadow:var(--shadow-hard-sm);
       padding:20px 16px;text-align:center;transition:transform .15s;
@@ -557,7 +558,7 @@
       <div class="sec-head">
         <span class="sec-kicker pixel">イベント紹介</span>
         <h2 class="sec-title pixel">たのしい企画がもりだくさん</h2>
-        <p class="sec-lead">ステージ・特産品・屋台・体験・キッズコーナー。まちのみんなで盛り上がる二日間です。</p>
+        <p class="sec-lead">ステージイベントとグルメ屋台。まちのみんなで盛り上がる二日間です。</p>
       </div>
       <div class="hi-grid" id="hi-grid"></div>
     </div>
