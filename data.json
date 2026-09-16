@@ -23,12 +23,12 @@
   ],
   "guests": [
     {
-      "_note": "出演日は10.16で確定、時間のみ未定のため仮置き。確定したら time を書き換え、timetable の 10.16 にも行を追加すること。",
-      "day": "10.16",
+      "_note": "10.15 16:30〜で確定（2026-09-16 支給タイムテーブル）。配列の並び順がそのまま同じ日の表示順になるので、時間順に並べること。",
+      "day": "10.15",
       "name": "志免飛龍太鼓",
       "name_kana": "しめひりゅうだいこ",
       "role": "和太鼓チーム（志免町）",
-      "time": "出演時間 調整中",
+      "time": "16:30〜",
       "photo": "images/guests/shime-hiryu-taiko.jpg",
       "bio": [
         {
@@ -42,28 +42,45 @@
       ]
     },
     {
-      "day": "10.16",
-      "name": "ビーグルクルー",
-      "role": "",
-      "time": "20:15〜20:45",
-      "photo": "images/guests/beaglecrew.jpg",
+      "_note": "2026-09-16 のタイムテーブルで追加。写真・プロフィールは支給待ちのため photo なし（photo が無くてもカード・モーダルは崩れない設計）。",
+      "day": "10.15",
+      "name": "KANAME",
+      "role": "昭和歌謡・演歌歌手",
+      "time": "19:50〜",
+      "photo": "",
+      "bio": []
+    },
+    {
+      "day": "10.15",
+      "name": "TAISUKE",
+      "role": "B-BOY／THE FLOORRIORZ クルーリーダー",
+      "time": "20:15〜",
+      "photo": "images/guests/taisuke.jpg",
       "bio": [
-        { "label": "実績", "text": "日本テレビ「誰も知らない泣ける歌」／TBS「CDTV」／テレビ朝日「ストリートファイターズ」" },
-        { "label": "TV出演", "text": "フジテレビ「FNS歌謡祭ラフミュージック」／日本テレビ系「ズムサタ」／フジテレビ「S-PARK」など" },
-        { "label": "CM", "text": "J-WAVE（楽曲：PADDLE）／PIZZA Cooc（楽曲：熱男-100 Match-／100円セットのバラード）／紅葉八幡宮（楽曲：涙）" },
-        { "label": "タイアップ", "text": "映画『TOGETHER』（楽曲：TOGETHER）／日テレプロ野球中継（楽曲：小さなヒーロー）／全国高校中学ゴルフ選手権大会（楽曲：ONE TEAM）" },
-        { "label": "登場曲提供", "text": "中田翔（楽曲：My HERO）／王貞治（楽曲：ときめきは永遠に）／斉藤和巳（楽曲：道-Route66-）／森福允彦（楽曲：Try again）／松田宣浩（楽曲：熱・100 Match）／牧原大成（楽曲：My Place）／涌井秀章（楽曲：The ONE）／西川龍馬（楽曲：なんとかなるやろ）他30名以上" },
-        { "label": "楽曲提供", "text": "フジテレビ「W杯バレーへの金字塔【ガンバレー部NEXT！】」「いとしのムーコ」背景音楽 他多数／メジャーアーティストへの楽曲提供30曲以上（コライト作曲含む）" },
-        { "label": "ドーム歌唱", "text": "PayPayドーム福岡／札幌ドーム 3回／バンテリンドーム ナゴヤ 4回" }
+        {
+          "label": "プロフィール",
+          "text": "8歳からブレイクダンスを始め、世界を舞台に活躍するB-BOY。世界で15人しか選ばれていない「Red Bull BC One ALL Stars」の初期メンバー7人に選出。THE FLOORRIORZのクルーリーダーを務める。"
+        },
+        {
+          "label": "肩書き",
+          "text": "THE FLOORRIORZ クルーリーダー／佐世保市（長崎県）観光名誉大使／かわさき産業親善大使"
+        },
+        {
+          "label": "主な戦績",
+          "text": "R16 Korea World Final Solo Battle 優勝（日本人初）／R16 Korea World Final Show&Battle 優勝（日本人初）／Red Bull BC One Japan 2007 優勝／Red Bull BC One ASIA PACIFIC Final 優勝／DANCE@LIVE FINAL 優勝6回（大会史上最多）／Battle of the Year World Final 2015〜2017 三連覇（大会史上初）／UK B-BOY CHAMPIONSHIP World Final 2016 優勝 ほか多数"
+        },
+        {
+          "label": "TV・CM・映画",
+          "text": "Red Bull CM（2010年・2012年・2016年）／赤西仁「Hey What's up」MV出演／「SMAP×SMAP」「笑っていいとも！」などTV番組多数／ドキュメンタリー映画「Turn it Loose」出演"
+        }
       ]
     },
     {
-      "_note": "出演日は10.15で確定、時間のみ未定のため仮置き。確定したら time を書き換え、timetable の 10.15 にも行を追加すること。",
       "day": "10.15",
       "name": "中村素也",
       "name_kana": "なかむらもとや",
       "role": "B'zものまね専門タレント",
-      "time": "出演時間 調整中",
+      "time": "20:30〜",
       "photo": "images/guests/nakamura-motoya.jpg",
       "bio": [
         {
@@ -90,29 +107,28 @@
       ]
     },
     {
-      "_note": "出演日は10.15で確定（2026-09-01の公式ポスターDAY1掲載で確認）、時間のみ未定のため仮置き。確定したら time を書き換え、timetable の 10.15 にも行を追加すること。",
-      "day": "10.15",
-      "name": "TAISUKE",
-      "role": "B-BOY／THE FLOORRIORZ クルーリーダー",
-      "time": "出演時間 調整中",
-      "photo": "images/guests/taisuke.jpg",
+      "_note": "2026-09-16 のタイムテーブルで追加。写真・プロフィールは支給待ちのため photo なし。",
+      "day": "10.16",
+      "name": "SUEGLRL's",
+      "role": "高校生ダンスチーム",
+      "time": "20:00〜",
+      "photo": "",
+      "bio": []
+    },
+    {
+      "day": "10.16",
+      "name": "ビーグルクルー",
+      "role": "",
+      "time": "20:15〜20:45",
+      "photo": "images/guests/beaglecrew.jpg",
       "bio": [
-        {
-          "label": "プロフィール",
-          "text": "8歳からブレイクダンスを始め、世界を舞台に活躍するB-BOY。世界で15人しか選ばれていない「Red Bull BC One ALL Stars」の初期メンバー7人に選出。THE FLOORRIORZのクルーリーダーを務める。"
-        },
-        {
-          "label": "肩書き",
-          "text": "THE FLOORRIORZ クルーリーダー／佐世保市（長崎県）観光名誉大使／かわさき産業親善大使"
-        },
-        {
-          "label": "主な戦績",
-          "text": "R16 Korea World Final Solo Battle 優勝（日本人初）／R16 Korea World Final Show&Battle 優勝（日本人初）／Red Bull BC One Japan 2007 優勝／Red Bull BC One ASIA PACIFIC Final 優勝／DANCE@LIVE FINAL 優勝6回（大会史上最多）／Battle of the Year World Final 2015〜2017 三連覇（大会史上初）／UK B-BOY CHAMPIONSHIP World Final 2016 優勝 ほか多数"
-        },
-        {
-          "label": "TV・CM・映画",
-          "text": "Red Bull CM（2010年・2012年・2016年）／赤西仁「Hey What's up」MV出演／「SMAP×SMAP」「笑っていいとも！」などTV番組多数／ドキュメンタリー映画「Turn it Loose」出演"
-        }
+        { "label": "実績", "text": "日本テレビ「誰も知らない泣ける歌」／TBS「CDTV」／テレビ朝日「ストリートファイターズ」" },
+        { "label": "TV出演", "text": "フジテレビ「FNS歌謡祭ラフミュージック」／日本テレビ系「ズムサタ」／フジテレビ「S-PARK」など" },
+        { "label": "CM", "text": "J-WAVE（楽曲：PADDLE）／PIZZA Cooc（楽曲：熱男-100 Match-／100円セットのバラード）／紅葉八幡宮（楽曲：涙）" },
+        { "label": "タイアップ", "text": "映画『TOGETHER』（楽曲：TOGETHER）／日テレプロ野球中継（楽曲：小さなヒーロー）／全国高校中学ゴルフ選手権大会（楽曲：ONE TEAM）" },
+        { "label": "登場曲提供", "text": "中田翔（楽曲：My HERO）／王貞治（楽曲：ときめきは永遠に）／斉藤和巳（楽曲：道-Route66-）／森福允彦（楽曲：Try again）／松田宣浩（楽曲：熱・100 Match）／牧原大成（楽曲：My Place）／涌井秀章（楽曲：The ONE）／西川龍馬（楽曲：なんとかなるやろ）他30名以上" },
+        { "label": "楽曲提供", "text": "フジテレビ「W杯バレーへの金字塔【ガンバレー部NEXT！】」「いとしのムーコ」背景音楽 他多数／メジャーアーティストへの楽曲提供30曲以上（コライト作曲含む）" },
+        { "label": "ドーム歌唱", "text": "PayPayドーム福岡／札幌ドーム 3回／バンテリンドーム ナゴヤ 4回" }
       ]
     }
   ],
@@ -120,12 +136,18 @@
     {
       "day": "10.15",
       "day_label": "1日目・木曜日",
-      "items": []
+      "items": [
+        { "time": "16:30", "content": "志免飛龍太鼓 和太鼓ステージ" },
+        { "time": "19:50", "content": "KANAME ライブステージ" },
+        { "time": "20:15", "content": "TAISUKE ブレイキンステージ" },
+        { "time": "20:30", "content": "中村素也 ものまねステージ" }
+      ]
     },
     {
       "day": "10.16",
       "day_label": "2日目・金曜日",
       "items": [
+        { "time": "20:00", "content": "SUEGLRL's ダンスステージ" },
         { "time": "20:15", "content": "ビーグルクルー ライブステージ（〜20:45）" }
       ]
     }
