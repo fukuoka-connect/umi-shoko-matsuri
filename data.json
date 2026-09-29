@@ -109,7 +109,7 @@
     {
       "_note": "2026-09-16 のタイムテーブルで追加。写真・プロフィールは支給待ちのため photo なし。",
       "day": "10.16",
-      "name": "SUEGLRL's",
+      "name": "SUEGIRL's",
       "role": "高校生ダンスチーム",
       "time": "20:00〜",
       "photo": "",
@@ -132,23 +132,59 @@
       ]
     }
   ],
+  "program_pdf": {
+    "_note": "商工会支給の『R8プログラムデータ』PDF。演目・出演者名の詳細はこちらが正。差し替えるときは files/ 配下の同名ファイルを上書きして push すればサイト側の修正は不要。",
+    "url": "files/umi-shoko-matsuri-2026-program.pdf",
+    "filename": "宇美町商工まつり2026_プログラム.pdf",
+    "label": "プログラム（演目・出演者）を見る",
+    "note": "各演目の曲目・出演者名は配布プログラム（PDF）に掲載しています。"
+  },
   "timetable": [
     {
       "day": "10.15",
       "day_label": "1日目・木曜日",
       "items": [
-        { "time": "16:30", "content": "志免飛龍太鼓 和太鼓ステージ" },
-        { "time": "19:50", "content": "KANAME ライブステージ" },
-        { "time": "20:15", "content": "TAISUKE ブレイキンステージ" },
-        { "time": "20:30", "content": "中村素也 ものまねステージ" }
+        { "time": "16:30", "genre": "ゲストステージ", "content": "志免飛龍太鼓（和太鼓）" },
+        { "time": "17:00", "genre": "あいさつ", "content": "壮青年部・青年部・女性部長・文化協会会長" },
+        { "time": "17:10", "genre": "紹介", "content": "福岡Ｊ・アンクラス" },
+        { "time": "17:15", "genre": "アトラクション", "content": "うどん早食い（小学生以下の一般参加）" },
+        { "time": "17:30", "genre": "社交ダンス", "content": "フレッシュサークル" },
+        { "time": "17:40", "genre": "フラダンス", "content": "ナニフラスタジオ" },
+        { "time": "17:49", "genre": "カラオケ", "content": "" },
+        { "time": "17:53", "genre": "カラオケ", "content": "" },
+        { "time": "17:57", "genre": "英語パフォーマンス", "content": "ＭＥＣ☆ミキの子供英会話教室" },
+        { "time": "18:13", "genre": "日本舞踊", "content": "藤京会" },
+        { "time": "18:29", "genre": "ダンス", "content": "Sparkle Kid's A" },
+        { "time": "18:47", "genre": "日本舞踊", "content": "錦緑会" },
+        { "time": "19:02", "genre": "日本舞踊", "content": "千美会" },
+        { "time": "19:17", "genre": "ダンス", "content": "Sparkle Kid's B" },
+        { "time": "19:35", "genre": "ダンス", "content": "Sparkle Kid's C" },
+        { "time": "19:50", "genre": "ゲストステージ", "content": "KANAME（ライブ）" },
+        { "time": "20:15", "genre": "ゲストステージ", "content": "TAISUKE（ブレイキン）" },
+        { "time": "20:30", "genre": "ゲストステージ", "content": "中村素也（ものまね）" }
       ]
     },
     {
       "day": "10.16",
       "day_label": "2日目・金曜日",
       "items": [
-        { "time": "20:00", "content": "SUEGLRL's ダンスステージ" },
-        { "time": "20:15", "content": "ビーグルクルー ライブステージ（〜20:45）" }
+        { "time": "17:00", "genre": "あいさつ", "content": "壮青年部・青年部・女性部長・文化協会会長" },
+        { "time": "17:10", "genre": "紹介", "content": "福岡Ｊ・アンクラス" },
+        { "time": "17:15", "genre": "アトラクション", "content": "うどん早食い（小学生以下の一般参加）" },
+        { "time": "17:30", "genre": "ダンス", "content": "Suproject／ミツバダンス部" },
+        { "time": "17:45", "genre": "日本舞踊", "content": "" },
+        { "time": "17:51", "genre": "詩吟", "content": "哲扇会" },
+        { "time": "18:00", "genre": "二胡", "content": "宇美二胡教室 蓮" },
+        { "time": "18:15", "genre": "カラオケ", "content": "" },
+        { "time": "18:21", "genre": "カラオケ", "content": "" },
+        { "time": "18:26", "genre": "日本舞踊", "content": "藤柳会" },
+        { "time": "18:39", "genre": "カラオケ", "content": "" },
+        { "time": "18:44", "genre": "ダンス", "content": "宇美町ストリートダンス教室" },
+        { "time": "19:00", "genre": "和太鼓", "content": "宇美太鼓ジュニア" },
+        { "time": "19:10", "genre": "和太鼓", "content": "宇美太鼓" },
+        { "time": "19:30", "genre": "カラオケ", "content": "宇美町文化協会（第2回 宇美町歌うま選手権 入賞者）" },
+        { "time": "20:00", "genre": "ゲストステージ", "content": "SUEGIRL's（ダンス）" },
+        { "time": "20:15", "genre": "ゲストステージ", "content": "ビーグルクルー（ライブ・〜20:45）" }
       ]
     }
   ],

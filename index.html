@@ -362,6 +362,57 @@
     }
     .tt-time{font-family:'Press Start 2P',cursive;font-size:11px;color:#fff;background:var(--sky-deeper);padding:8px 8px;text-align:center;min-width:56px;}
     .tt-body .ti{font-weight:800;color:var(--line);font-size:14px;}
+    /* 種目バッジ＋出演団体（1行目=種目／2行目=団体・演者） */
+    .tt-genre{
+      display:inline-block;background:var(--yellow);border:2px solid var(--line);
+      padding:3px 10px;font-weight:900;font-size:13px;color:var(--line);line-height:1.4;
+    }
+    .tt-row.is-guest{background:var(--sky-mid);}
+    .tt-row.is-guest .tt-genre{background:var(--red);color:#fff;}
+    .tt-detail{font-size:12.5px;font-weight:700;color:var(--sky-deeper);margin-top:5px;line-height:1.5;}
+
+    /* ── プログラムPDF ── */
+    .pdf-cta{max-width:640px;margin:18px auto 0;text-align:center;}
+    .pdf-cta .note{font-size:12.5px;color:var(--sky-deeper);font-weight:700;margin-bottom:10px;line-height:1.6;}
+    .btn-pdf{
+      display:inline-block;background:var(--yellow);color:var(--line);
+      border:3px solid var(--line);box-shadow:var(--shadow-hard-sm);
+      padding:13px 22px;font-weight:900;font-size:14px;cursor:pointer;text-decoration:none;
+      transition:transform .12s ease,box-shadow .12s ease;
+    }
+    .btn-pdf:hover,.btn-pdf:focus-visible{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line);}
+    .pdf-modal{
+      background:#fff;border:3.5px solid var(--line);box-shadow:8px 8px 0 var(--red);
+      max-width:900px;width:100%;height:88vh;display:flex;flex-direction:column;position:relative;
+    }
+    .pdf-modal .pdf-head{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+      padding:12px 14px;border-bottom:3px solid var(--line);background:var(--sky);
+    }
+    .pdf-modal .pdf-head h3{font-size:15px;font-weight:900;color:var(--line);margin-right:auto;}
+    .pdf-modal .pdf-head .act{
+      display:inline-block;background:var(--sky-mid);color:var(--line);border:2px solid var(--line);
+      box-shadow:var(--shadow-hard-sm);padding:7px 12px;font-weight:900;font-size:12px;
+      text-decoration:none;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease;
+    }
+    .pdf-modal .pdf-head .act:hover,.pdf-modal .pdf-head .act:focus-visible{
+      background:var(--yellow);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--line);
+    }
+    .pdf-modal .pdf-head .act.close{background:var(--red);color:#fff;}
+    .pdf-modal .pdf-frame{flex:1;min-height:0;background:var(--sky-mid);}
+    .pdf-modal .pdf-frame iframe{width:100%;height:100%;border:0;display:block;}
+    /* iframe内PDFを開けない端末（iOS Safari等）向けのフォールバック */
+    .pdf-fallback{
+      display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+      height:100%;padding:28px 20px;text-align:center;
+    }
+    .pdf-fallback p{font-size:13px;font-weight:700;color:var(--line);line-height:1.7;}
+    .pdf-frame.no-inline iframe{display:none;}
+    .pdf-frame.no-inline .pdf-fallback{display:flex;}
+    @media(max-width:560px){
+      .pdf-modal{height:92vh;}
+      .pdf-modal .pdf-head h3{width:100%;margin-right:0;font-size:13.5px;}
+    }
 
     /* ── FOOD 屋台 ── */
     /* カード枚数に追随（1枚のときに左半分へ寄らないよう auto-fit＋最大幅） */
@@ -579,7 +630,7 @@
       </div>
 
       <p class="swipe-hint">👉 左右にスワイプ、またはタブで15日／16日を切り替え</p>
-      <p class="sec-lead" style="color:#fff;text-align:center;margin-top:10px;">※ 出演者・タイムテーブルは決定次第、このページで更新します</p>
+      <p class="sec-lead" style="color:#fff;text-align:center;margin-top:10px;">※ 進行時間は目安です。内容は変更になる場合があります</p>
     </div>
   </section>
 
@@ -588,6 +639,26 @@
     <div class="guest-modal">
       <button class="close-btn" id="guest-modal-close" aria-label="閉じる">✕</button>
       <div id="guest-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- プログラムPDFモーダル -->
+  <div class="guest-modal-overlay" id="pdf-modal-overlay">
+    <div class="pdf-modal">
+      <div class="pdf-head">
+        <h3>📄 プログラム（演目・出演者）</h3>
+        <a class="act" id="pdf-open-tab" href="#" target="_blank" rel="noopener">別タブで開く ↗</a>
+        <a class="act" id="pdf-download" href="#" download>ダウンロード ⬇</a>
+        <button class="act close" id="pdf-modal-close" aria-label="閉じる">閉じる ✕</button>
+      </div>
+      <div class="pdf-frame" id="pdf-frame">
+        <iframe id="pdf-iframe" title="宇美町商工まつり2026 プログラム"></iframe>
+        <div class="pdf-fallback">
+          <p>ご利用の端末ではPDFをこの画面で表示できません。<br>下のボタンから開く／保存してご覧ください。</p>
+          <a class="btn-pdf" id="pdf-fallback-open" href="#" target="_blank" rel="noopener">PDFを開く ↗</a>
+          <a class="btn-pdf" id="pdf-fallback-dl" href="#" download>ダウンロード ⬇</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -748,6 +819,47 @@
       const trackEl = document.getElementById('day-track');
       let activeDay = 0;
 
+      // ── プログラムPDF（演目・出演者の詳細） ──
+      const pdf = data.program_pdf || null;
+      const pdfCtaHtml = (pdf && pdf.url)
+        ? `<div class="pdf-cta">
+             ${pdf.note?`<p class="note">${pdf.note}</p>`:''}
+             <button type="button" class="btn-pdf js-open-pdf">📄 ${pdf.label||'プログラムPDFを見る'}</button>
+           </div>`
+        : '';
+      if(pdf && pdf.url){
+        const dlName = pdf.filename || 'program.pdf';
+        ['pdf-open-tab','pdf-fallback-open'].forEach(id=>{
+          const el=document.getElementById(id); if(el) el.href = pdf.url;
+        });
+        ['pdf-download','pdf-fallback-dl'].forEach(id=>{
+          const el=document.getElementById(id); if(el){ el.href = pdf.url; el.setAttribute('download', dlName); }
+        });
+        const pdfOverlay = document.getElementById('pdf-modal-overlay');
+        const pdfFrame = document.getElementById('pdf-frame');
+        const pdfIframe = document.getElementById('pdf-iframe');
+        // iOS Safari はiframe内PDFをスクロール表示できないためフォールバックUIに切替
+        const inlinePdfUnsupported = /iP(hone|od|ad)/.test(navigator.userAgent);
+        if(inlinePdfUnsupported) pdfFrame.classList.add('no-inline');
+
+        function openPdfModal(){
+          // src は初回オープン時のみ設定（初期表示での無駄な読み込みを避ける）
+          if(!inlinePdfUnsupported && !pdfIframe.getAttribute('src')) pdfIframe.setAttribute('src', pdf.url);
+          pdfOverlay.classList.add('open');
+          document.body.style.overflow='hidden';
+        }
+        function closePdfModal(){
+          pdfOverlay.classList.remove('open');
+          document.body.style.overflow='';
+        }
+        document.addEventListener('click', e=>{
+          if(e.target.closest('.js-open-pdf')) openPdfModal();
+        });
+        document.getElementById('pdf-modal-close').addEventListener('click', closePdfModal);
+        pdfOverlay.addEventListener('click', e=>{ if(e.target.id==='pdf-modal-overlay') closePdfModal(); });
+        document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePdfModal(); });
+      }
+
       function openGuestModal(g){
         const body = document.getElementById('guest-modal-body');
         const photoHtml = g.photo
@@ -807,8 +919,20 @@
         }
 
         const items = day.items||[];
+        // 1行 = 時間 + 種目バッジ（+ 出演団体）。種目が無い旧データは content をそのまま見出しに使う
         const ttHtml = items.length
-          ? `<div class="tt-list">${items.map(it=>`<div class="tt-row"><div class="tt-time press">${it.time||''}</div><div class="tt-body"><div class="ti">${it.content||''}</div></div></div>`).join('')}</div>`
+          ? `<div class="tt-list">${items.map(it=>{
+              const genre = it.genre || it.content || '';
+              const detail = it.genre ? (it.content||'') : '';
+              const isGuest = /ゲスト/.test(genre);
+              return `<div class="tt-row${isGuest?' is-guest':''}">
+                <div class="tt-time press">${it.time||''}</div>
+                <div class="tt-body">
+                  <div class="ti"><span class="tt-genre">${genre}</span></div>
+                  ${detail?`<div class="tt-detail">${detail}</div>`:''}
+                </div>
+              </div>`;
+            }).join('')}</div>${pdfCtaHtml}`
           : `<div class="placeholder-box">タイムテーブルは決定次第掲載します</div>`;
 
         page.innerHTML = `
