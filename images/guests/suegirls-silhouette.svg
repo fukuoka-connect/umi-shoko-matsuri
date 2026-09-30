@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="ダンスチームのシルエット">
+  <!-- SUEGIRL'S 写真支給までの代替ビジュアル。サイトの配色（sky / line / yellow / red）に合わせた手描きSVG -->
+  <defs>
+    <style>
+      .bg{fill:#bfe6f7;}
+      .fig{fill:none;stroke:#0a1a2a;stroke-width:26;stroke-linecap:round;stroke-linejoin:round;}
+      .fig-thick{fill:none;stroke:#0a1a2a;stroke-width:34;stroke-linecap:round;stroke-linejoin:round;}
+      .head{fill:#0a1a2a;}
+      .pop-y{fill:#ffd93d;}
+      .pop-r{fill:#e5383b;}
+      .floor{fill:#8fd3ef;}
+    </style>
+  </defs>
+
+  <rect class="bg" width="600" height="600"/>
+
+  <!-- 床のライン（奥行きを出す帯） -->
+  <rect class="floor" y="438" width="600" height="162"/>
+
+  <!-- ポップな装飾ドット -->
+  <circle class="pop-y" cx="64" cy="86" r="15"/>
+  <circle class="pop-r" cx="536" cy="112" r="12"/>
+  <circle class="pop-y" cx="512" cy="52" r="9"/>
+  <circle class="pop-r" cx="92" cy="176" r="9"/>
+  <circle class="pop-y" cx="300" cy="44" r="11"/>
+
+  <!-- ① 左端：両腕を上げてV字 -->
+  <g transform="translate(96,214) scale(0.80)">
+    <circle class="head" cx="0" cy="0" r="27"/>
+    <path class="fig-thick" d="M0,30 L2,128"/>
+    <path class="fig" d="M0,54 L-54,-2"/>
+    <path class="fig" d="M0,54 L52,-6"/>
+    <path class="fig" d="M2,126 L-26,206 L-34,268"/>
+    <path class="fig" d="M2,126 L34,208 L30,270"/>
+  </g>
+
+  <!-- ② 斜めに腕を伸ばすポーズ -->
+  <g transform="translate(200,196) scale(0.92)">
+    <circle class="head" cx="6" cy="0" r="27"/>
+    <path class="fig-thick" d="M4,30 L-6,130"/>
+    <path class="fig" d="M2,56 L62,22"/>
+    <path class="fig" d="M2,56 L-48,84"/>
+    <path class="fig" d="M-6,128 L-40,204 L-30,266"/>
+    <path class="fig" d="M-6,128 L24,206 L36,262"/>
+  </g>
+
+  <!-- ③ センター：ジャンプして脚を開く -->
+  <g transform="translate(330,170) scale(1.0)">
+    <circle class="head" cx="0" cy="0" r="28"/>
+    <path class="fig-thick" d="M0,32 L0,132"/>
+    <path class="fig" d="M0,58 L-66,26"/>
+    <path class="fig" d="M0,58 L66,26"/>
+    <path class="fig" d="M0,130 L-52,196 L-76,246"/>
+    <path class="fig" d="M0,130 L52,196 L76,246"/>
+  </g>
+
+  <!-- ④ 片腕を胸の前でクロス -->
+  <g transform="translate(458,206) scale(0.88)">
+    <circle class="head" cx="-6" cy="0" r="27"/>
+    <path class="fig-thick" d="M-4,30 L6,130"/>
+    <path class="fig" d="M-2,56 L-58,16"/>
+    <path class="fig" d="M-2,60 L44,92"/>
+    <path class="fig" d="M6,128 L-26,206 L-36,264"/>
+    <path class="fig" d="M6,128 L38,202 L34,266"/>
+  </g>
+
+  <!-- ⑤ 右端：体を傾けて片腕を上げる -->
+  <g transform="translate(542,228) scale(0.76)">
+    <circle class="head" cx="12" cy="-6" r="27"/>
+    <path class="fig-thick" d="M10,24 L-8,126"/>
+    <path class="fig" d="M6,50 L54,-14"/>
+    <path class="fig" d="M6,52 L-46,60"/>
+    <path class="fig" d="M-8,124 L-38,200 L-48,262"/>
+    <path class="fig" d="M-8,124 L20,204 L14,266"/>
+  </g>
+</svg>

@@ -47,7 +47,7 @@
       "name": "KANAME",
       "role": "昭和歌謡・演歌歌手",
       "time": "19:50〜",
-      "photo": "",
+      "photo": "images/guests/kaname.jpg",
       "bio": []
     },
     {
@@ -107,12 +107,12 @@
       ]
     },
     {
-      "_note": "2026-09-16 のタイムテーブルで追加。写真・プロフィールは支給待ちのため photo なし。",
+      "_note": "写真・プロフィールは支給待ち。photo は代替のダンスシルエットSVG（実写が届いたら差し替える）。",
       "day": "10.16",
-      "name": "SUEGIRL's",
+      "name": "SUEGIRL'S",
       "role": "高校生ダンスチーム",
-      "time": "20:00〜",
-      "photo": "",
+      "time": "19:55〜",
+      "photo": "images/guests/suegirls-silhouette.svg",
       "bio": []
     },
     {
@@ -183,7 +183,7 @@
         { "time": "19:00", "genre": "和太鼓", "content": "宇美太鼓ジュニア" },
         { "time": "19:10", "genre": "和太鼓", "content": "宇美太鼓" },
         { "time": "19:30", "genre": "カラオケ", "content": "宇美町文化協会（第2回 宇美町歌うま選手権 入賞者）" },
-        { "time": "20:00", "genre": "ゲストステージ", "content": "SUEGIRL's（ダンス）" },
+        { "time": "19:55", "genre": "ゲストステージ", "content": "SUEGIRL'S（ダンス）" },
         { "time": "20:15", "genre": "ゲストステージ", "content": "ビーグルクルー（ライブ・〜20:45）" }
       ]
     }
