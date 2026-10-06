@@ -325,9 +325,13 @@
 
     /* スマホでも2列にして、ゲスト数の多い日が縦に長くなりすぎないようにする */
     .guest-grid{display:grid;gap:12px;grid-template-columns:1fr 1fr;}
-    @media(min-width:900px){.guest-grid{grid-template-columns:repeat(4,1fr);gap:14px;}}
     .guest-grid .guest-card.solo{grid-column:1/-1;justify-self:center;width:calc(50% - 6px);}
-    @media(min-width:900px){.guest-grid .guest-card.solo{width:calc(25% - 11px);min-width:240px;}}
+    /* PCは1行4枚。枚数が半端でも中央に寄せる（メインゲストは1行まるごと） */
+    @media(min-width:900px){
+      .guest-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+      .guest-grid .guest-card,.guest-grid .guest-card.solo{width:calc(25% - 10.5px);}
+      .guest-grid .guest-card.featured{width:100%;}
+    }
     .guest-card{
       background:var(--sky);border:2.5px solid var(--line);padding:0;text-align:center;
       cursor:pointer;transition:transform .15s,box-shadow .15s;overflow:hidden;
