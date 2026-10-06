@@ -331,6 +331,7 @@
       .guest-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
       .guest-grid .guest-card,.guest-grid .guest-card.solo{width:calc(25% - 10.5px);}
       .guest-grid .guest-card.featured{width:100%;}
+      .guest-grid.pair .guest-card.featured{width:calc(50% - 7px);}
     }
     .guest-card{
       background:var(--sky);border:2.5px solid var(--line);padding:0;text-align:center;
@@ -377,6 +378,11 @@
       .guest-card.featured .nm{font-size:32px;}
       .guest-card.featured .rl{font-size:14px;}
       .guest-card.featured .tm{font-size:14px;}
+      /* メインゲストが2組以上の日は、同じ大きさで横に並べる */
+      .guest-grid.pair .guest-card.featured{grid-column:auto;display:block;text-align:center;}
+      .guest-grid.pair .guest-card.featured .ph{border-right:0;border-bottom:3px solid var(--line);}
+      .guest-grid.pair .guest-card.featured .info{padding:18px 16px 20px;}
+      .guest-grid.pair .guest-card.featured .nm{font-size:26px;}
     }
 
     /* ── ゲスト詳細モーダル ── */
@@ -981,11 +987,11 @@
         const btn=document.createElement('button');btn.type='button';btn.className='day-tab-btn';
         btn.setAttribute('role','tab');
         const thumbs = dayGuests.map(g=>`<span class="${g.featured?'main':''}"${g.photo?` style="background-image:url('${g.photo}')"`:''}>${g.photo?'':'🎤'}</span>`).join('');
-        const main = dayGuests.find(g=>g.featured);
-        const others = dayGuests.filter(g=>g!==main).map(g=>g.name).join('・');
+        const mains = dayGuests.filter(g=>g.featured).map(g=>g.name).join('・');
+        const others = dayGuests.filter(g=>!g.featured).map(g=>g.name).join('・');
         btn.innerHTML=`<span><span class="d press">${day.day}</span><span class="w">${weekdayOf(day)}・${i+1}日目</span></span>
           ${thumbs?`<span class="thumbs" aria-hidden="true">${thumbs}</span>`:''}
-          <span class="gn">${main?`<b>${main.name}</b>`:''}${others}</span>
+          <span class="gn">${mains?`<b>${mains}</b>`:''}${others}</span>
           <span class="cue"></span>`;
         btn.addEventListener('click',()=>goToDay(i));
         tabsEl.appendChild(btn);
@@ -1004,7 +1010,8 @@
         } else {
           const regular = dayGuests.filter(g=>!g.featured);
           const lastSolo = regular.length%2===1 ? regular[regular.length-1] : null;
-          guestHtml = `<div class="guest-grid">${dayGuests.map((g,gi)=>{
+          const pair = dayGuests.length - regular.length > 1;
+          guestHtml = `<div class="guest-grid${pair?' pair':''}">${dayGuests.map((g,gi)=>{
             const ph = g.photo
               ? `<img class="bg" src="${g.photo}" alt="" aria-hidden="true"><img class="fg" src="${g.photo}" alt="${g.name||''}">`
               : '🎤';
