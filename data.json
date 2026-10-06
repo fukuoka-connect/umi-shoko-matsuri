@@ -118,6 +118,7 @@
     {
       "day": "10.16",
       "name": "ビーグルクルー",
+      "featured": true,
       "role": "",
       "time": "20:15〜20:45",
       "photo": "images/guests/beaglecrew.jpg",

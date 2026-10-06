@@ -262,24 +262,72 @@
       border:2.5px dashed #99a6ad;padding:28px 16px;text-align:center;color:#5a6b78;font-weight:800;font-size:13.5px;
     }
     /* ── 日程タブ＆スワイプ切替 ── */
-    .day-tabs{display:flex;gap:10px;justify-content:center;margin-bottom:22px;}
+    /* 日程カード：両日を同じ大きさで並べ、その日のゲストを一目で見せる（＝タブ） */
+    .day-tabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:760px;margin:0 auto 10px;}
     .day-tab-btn{
-      background:var(--sky-mid);color:var(--line);font-weight:900;font-size:14px;
-      padding:10px 22px;border:2.5px solid var(--line);cursor:pointer;
-      box-shadow:3px 3px 0 var(--line);transition:transform .12s,box-shadow .12s,background .15s,color .15s;
-      font-family:inherit;
+      position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;
+      background:var(--sky-mid);color:var(--line);font-weight:900;font-size:14px;text-align:center;
+      padding:14px 10px 12px;border:3px solid var(--line);cursor:pointer;
+      box-shadow:4px 4px 0 var(--line);transition:transform .12s,box-shadow .12s,background .15s;
+      font-family:inherit;line-height:1.4;
     }
-    .day-tab-btn .d{display:block;font-family:'Press Start 2P',cursive;font-size:13px;line-height:1.6;}
-    .day-tab-btn .w{display:block;font-size:10.5px;margin-top:2px;}
-    .day-tab-btn.active{background:var(--yellow);transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line);}
-    .day-tab-btn:not(.active):hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--line);}
-    .day-swiper{overflow:hidden;touch-action:pan-y;}
-    .day-track{display:flex;transition:transform .38s cubic-bezier(.22,.8,.28,1);will-change:transform;}
+    .day-tab-btn .d{display:block;font-family:'Press Start 2P',cursive;font-size:16px;line-height:1.5;}
+    .day-tab-btn .w{display:block;font-size:11px;font-weight:800;}
+    .day-tab-btn .thumbs{display:flex;justify-content:center;}
+    .day-tab-btn .thumbs span{
+      width:38px;height:38px;border-radius:50%;border:2.5px solid var(--line);background:#fff center/cover no-repeat;
+      margin-left:-9px;display:flex;align-items:center;justify-content:center;font-size:17px;
+    }
+    .day-tab-btn .thumbs span:first-child{margin-left:0;}
+    .day-tab-btn .thumbs span.main{width:48px;height:48px;border-color:var(--red);border-width:3px;}
+    .day-tab-btn .gn{font-size:11px;font-weight:800;line-height:1.5;color:var(--line);}
+    .day-tab-btn .gn b{display:block;font-size:14px;font-weight:900;color:var(--red);}
+    .day-tab-btn .cue{font-size:10.5px;font-weight:900;color:var(--sky-deeper);}
+    .day-tab-btn.active{background:var(--yellow);transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line);}
+    .day-tab-btn.active .cue{color:var(--line);}
+    .day-tab-btn.active::after{
+      content:"";position:absolute;left:50%;bottom:-15px;transform:translateX(-50%);
+      border:9px solid transparent;border-top-color:var(--line);
+    }
+    .day-tab-btn:not(.active):hover{transform:translate(1px,1px);box-shadow:3px 3px 0 var(--line);}
+    @media(min-width:640px){
+      .day-tab-btn{padding:18px 14px 14px;}
+      .day-tab-btn .d{font-size:20px;}
+      .day-tab-btn .w{font-size:12px;}
+      .day-tab-btn .gn{font-size:12.5px;}
+      .day-tab-btn .gn b{font-size:17px;}
+    }
+    .day-now{text-align:center;color:#fff;font-weight:900;font-size:13px;margin:18px 0 14px;letter-spacing:.04em;}
+    .day-now .press{color:var(--yellow);font-size:12px;}
+
+    /* スクロール追従の日程切替バー（ステージ区間でだけ出す） */
+    .day-bar{
+      position:fixed;left:0;right:0;top:var(--nav-h,60px);z-index:48;
+      background:var(--sky-deeper);border-bottom:3px solid var(--line);
+      padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:8px;
+      transform:translateY(-120%);visibility:hidden;transition:transform .22s ease,visibility .22s;
+    }
+    .day-bar.show{transform:none;visibility:visible;}
+    .day-bar .lb{color:#fff;font-size:11px;font-weight:900;white-space:nowrap;}
+    .day-bar button{
+      flex:1 1 0;max-width:200px;font-family:inherit;font-weight:900;font-size:13px;line-height:1.3;
+      background:var(--sky-mid);color:var(--line);border:2.5px solid var(--line);
+      padding:7px 6px;cursor:pointer;box-shadow:2px 2px 0 var(--line);
+    }
+    .day-bar button .press{font-size:11px;margin-right:4px;}
+    .day-bar button.active{background:var(--yellow);transform:translate(2px,2px);box-shadow:none;}
+    body.day-bar-on .daynight-hud{top:calc(var(--nav-h,60px) + 64px);}
+
+    .day-swiper{overflow:hidden;touch-action:pan-y;transition:height .3s ease;}
+    .day-track{display:flex;align-items:flex-start;transition:transform .38s cubic-bezier(.22,.8,.28,1);will-change:transform;}
     .day-page{flex:0 0 100%;min-width:0;padding-inline:2px;}
     .swipe-hint{text-align:center;color:#fff;font-size:11.5px;font-weight:800;margin-top:14px;opacity:.85;}
 
-    .guest-grid{display:grid;gap:14px;grid-template-columns:1fr;}
-    @media(min-width:640px){.guest-grid{grid-template-columns:1fr 1fr;}}
+    /* スマホでも2列にして、ゲスト数の多い日が縦に長くなりすぎないようにする */
+    .guest-grid{display:grid;gap:12px;grid-template-columns:1fr 1fr;}
+    @media(min-width:900px){.guest-grid{grid-template-columns:repeat(4,1fr);gap:14px;}}
+    .guest-grid .guest-card.solo{grid-column:1/-1;justify-self:center;width:calc(50% - 6px);}
+    @media(min-width:900px){.guest-grid .guest-card.solo{width:calc(25% - 11px);min-width:240px;}}
     .guest-card{
       background:var(--sky);border:2.5px solid var(--line);padding:0;text-align:center;
       cursor:pointer;transition:transform .15s,box-shadow .15s;overflow:hidden;
@@ -303,6 +351,29 @@
     .guest-card .tm{display:inline-block;margin-top:10px;background:var(--yellow);border:2px solid var(--line);padding:4px 12px;font-weight:900;font-size:11.5px;color:var(--line);}
     .guest-card .tap-note{margin-top:10px;font-size:10.5px;color:var(--sky-deeper);font-weight:700;}
     .guest-card .tap-note::before{content:"👆 ";}
+    @media(max-width:639px){
+      .guest-card .info{padding:10px 8px 12px;}
+      .guest-card .nm{font-size:15.5px;}
+      .guest-card .rl{font-size:11px;line-height:1.5;}
+      .guest-card .tm{font-size:11px;padding:3px 8px;margin-top:8px;}
+      .guest-card .tap-note{font-size:10px;margin-top:6px;}
+    }
+    /* メインゲスト（data.json の featured:true）：全幅で大きく */
+    .guest-card.featured{grid-column:1/-1;border-width:3.5px;box-shadow:5px 5px 0 var(--red);}
+    .guest-card.featured .ph{aspect-ratio:4/3;}
+    .guest-card.featured .main-badge{
+      display:inline-block;background:var(--red);color:#fff;font-weight:900;font-size:11px;letter-spacing:.12em;
+      padding:3px 12px;border:2px solid var(--line);margin-bottom:8px;transform:rotate(-2deg);
+    }
+    .guest-card.featured .nm{font-size:24px;}
+    @media(min-width:640px){
+      .guest-card.featured{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;text-align:left;}
+      .guest-card.featured .ph{align-self:stretch;aspect-ratio:4/3;border-bottom:0;border-right:3px solid var(--line);}
+      .guest-card.featured .info{padding:24px 26px;}
+      .guest-card.featured .nm{font-size:32px;}
+      .guest-card.featured .rl{font-size:14px;}
+      .guest-card.featured .tm{font-size:14px;}
+    }
 
     /* ── ゲスト詳細モーダル ── */
     .guest-modal-overlay{
@@ -623,16 +694,22 @@
         <h2 class="sec-title pixel" style="color:var(--yellow);-webkit-text-stroke:6px var(--line);">ステージイベント</h2>
       </div>
 
-      <div class="day-tabs" id="day-tabs"></div>
+      <div class="day-tabs" id="day-tabs" role="tablist" aria-label="開催日を選ぶ"></div>
+      <p class="day-now" id="day-now" aria-live="polite"></p>
 
       <div class="day-swiper" id="day-swiper">
         <div class="day-track" id="day-track"></div>
       </div>
 
-      <p class="swipe-hint">👉 左右にスワイプ、またはタブで15日／16日を切り替え</p>
+      <p class="swipe-hint">👉 上の日付カード、または左右スワイプで15日／16日を切り替え</p>
       <p class="sec-lead" style="color:#fff;text-align:center;margin-top:10px;">※ 進行時間は目安です。内容は変更になる場合があります</p>
     </div>
   </section>
+
+  <!-- ステージ区間をスクロール中だけ出る日程切替バー（transformのかかるsectionの外に置く） -->
+  <div class="day-bar" id="day-bar" aria-hidden="true">
+    <span class="lb">ステージ</span>
+  </div>
 
   <!-- ゲスト詳細モーダル -->
   <div class="guest-modal-overlay" id="guest-modal-overlay">
@@ -887,28 +964,51 @@
         if(e.target.id==='guest-modal-overlay') closeGuestModal();
       });
 
+      const barEl = document.getElementById('day-bar');
+      const dayNowEl = document.getElementById('day-now');
+      const weekdayOf = day => (day.day_label||'').replace(/^\d日目・?/,'');
+
       tt.forEach((day, i)=>{
-        // タブボタン
-        const btn=document.createElement('button');btn.type='button';btn.className='day-tab-btn'+(i===0?' active':'');
-        btn.innerHTML=`<span class="d press">${day.day}</span><span class="w">${(day.day_label||'').replace(/^\d日目・?/,'')}</span>`;
+        // メインゲスト（featured:true）を先頭に。残りは data.json の並び順（＝時間順）
+        const dayGuests = guests.filter(g=>g.day===day.day);
+        dayGuests.sort((a,b)=>(b.featured?1:0)-(a.featured?1:0));
+
+        // 日程カード（タブ）：その日のゲストの顔と名前を並べ、両日を同じ重さで見せる
+        const btn=document.createElement('button');btn.type='button';btn.className='day-tab-btn';
+        btn.setAttribute('role','tab');
+        const thumbs = dayGuests.map(g=>`<span class="${g.featured?'main':''}"${g.photo?` style="background-image:url('${g.photo}')"`:''}>${g.photo?'':'🎤'}</span>`).join('');
+        const main = dayGuests.find(g=>g.featured);
+        const others = dayGuests.filter(g=>g!==main).map(g=>g.name).join('・');
+        btn.innerHTML=`<span><span class="d press">${day.day}</span><span class="w">${weekdayOf(day)}・${i+1}日目</span></span>
+          ${thumbs?`<span class="thumbs" aria-hidden="true">${thumbs}</span>`:''}
+          <span class="gn">${main?`<b>${main.name}</b>`:''}${others}</span>
+          <span class="cue"></span>`;
         btn.addEventListener('click',()=>goToDay(i));
         tabsEl.appendChild(btn);
 
+        const bb=document.createElement('button');bb.type='button';
+        bb.innerHTML=`<span class="press">${day.day}</span>${weekdayOf(day).replace(/曜日$/,'')}`;
+        bb.addEventListener('click',()=>{ goToDay(i); scrollToStageTop(); });
+        barEl.appendChild(bb);
+
         // ページ（ゲスト＋タイムテーブル）
         const page=document.createElement('div');page.className='day-page';
-        const dayGuests = guests.filter(g=>g.day===day.day);
 
         let guestHtml;
         if(dayGuests.length===0){
           guestHtml = `<div class="placeholder-box">ゲスト情報は近日公開</div>`;
         } else {
+          const regular = dayGuests.filter(g=>!g.featured);
+          const lastSolo = regular.length%2===1 ? regular[regular.length-1] : null;
           guestHtml = `<div class="guest-grid">${dayGuests.map((g,gi)=>{
             const ph = g.photo
               ? `<img class="bg" src="${g.photo}" alt="" aria-hidden="true"><img class="fg" src="${g.photo}" alt="${g.name||''}">`
               : '🎤';
-            return `<div class="guest-card" data-day="${i}" data-gi="${gi}" role="button" tabindex="0">
+            const cls = g.featured ? ' featured' : (g===lastSolo ? ' solo' : '');
+            return `<div class="guest-card${cls}" data-day="${i}" data-gi="${gi}" role="button" tabindex="0">
               <div class="ph">${ph}</div>
               <div class="info">
+                ${g.featured?'<div class="main-badge">MAIN GUEST</div>':''}
                 <div class="nm">${g.name||''}${g.name_kana?`<span class="kana">${g.name_kana}</span>`:''}</div>
                 ${g.role?`<div class="rl">${g.role}</div>`:''}
                 ${g.time?`<div class="tm">${g.time}</div>`:''}
@@ -954,11 +1054,69 @@
         });
       });
 
+      const swiperEl = document.getElementById('day-swiper');
+      // 表示中の日の高さに合わせる（長い日の高さに引っぱられて短い日の下に空白が出ないように）
+      function syncHeight(){
+        const page = trackEl.children[activeDay];
+        if(page) swiperEl.style.height = page.offsetHeight + 'px';
+      }
       function goToDay(i){
         activeDay = Math.max(0, Math.min(tt.length-1, i));
         trackEl.style.transform = `translateX(-${activeDay*100}%)`;
-        tabsEl.querySelectorAll('.day-tab-btn').forEach((b,bi)=>b.classList.toggle('active', bi===activeDay));
+        tabsEl.querySelectorAll('.day-tab-btn').forEach((b,bi)=>{
+          const on = bi===activeDay;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on);
+          b.querySelector('.cue').textContent = on ? '▼ 表示中' : '👆 タップで切替';
+        });
+        barEl.querySelectorAll('button').forEach((b,bi)=>b.classList.toggle('active', bi===activeDay));
+        const d = tt[activeDay];
+        if(d) dayNowEl.innerHTML = `<span class="press">${d.day}</span>（${weekdayOf(d).replace(/曜日$/,'')}）の出演ゲストとタイムテーブル`;
+        syncHeight();
       }
+      function navH(){ const n=document.querySelector('nav'); return n ? n.offsetHeight : 0; }
+      function scrollToStageTop(){
+        const top = dayNowEl.getBoundingClientRect().top + window.scrollY - navH() - barEl.offsetHeight - 8;
+        if(window.scrollY > top) window.scrollTo({top, behavior:'smooth'});
+      }
+      if('ResizeObserver' in window){
+        const ro = new ResizeObserver(syncHeight);
+        Array.from(trackEl.children).forEach(p=>ro.observe(p));
+      } else {
+        window.addEventListener('resize', syncHeight);
+      }
+
+      // 追従バー：日程カードが画面上に流れてから、ステージ区間を抜けるまで表示
+      (function(){
+        const stage = document.getElementById('stage');
+        let ticking=false;
+        function update(){
+          ticking=false;
+          const h = navH();
+          document.documentElement.style.setProperty('--nav-h', h+'px');
+          const tabsBottom = tabsEl.getBoundingClientRect().bottom;
+          const stageBottom = stage.getBoundingClientRect().bottom;
+          const show = tabsBottom < h && stageBottom > h + 120;
+          barEl.classList.toggle('show', show);
+          barEl.setAttribute('aria-hidden', !show);
+          document.body.classList.toggle('day-bar-on', show);
+        }
+        const req=()=>{ if(!ticking){ ticking=true; requestAnimationFrame(update); } };
+        window.addEventListener('scroll', req, {passive:true});
+        window.addEventListener('resize', req);
+        update();
+      })();
+
+      // 初期表示の日：開催日当日以降はその日を開く（16日に来た人に15日を見せない）
+      (function(){
+        const now = new Date();
+        let start = 0;
+        tt.forEach((d,i)=>{
+          const m = /^(\d{1,2})\.(\d{1,2})$/.exec(d.day||'');
+          if(m && now >= new Date(now.getFullYear(), +m[1]-1, +m[2])) start = i;
+        });
+        goToDay(start);
+      })();
 
       // スワイプ操作
       (function(){
